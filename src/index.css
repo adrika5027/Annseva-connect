@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 90 33% 96%;
+    --foreground: 120 40% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 40% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 40% 10%;
+
+    --primary: 120 54% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 122 39% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 90 30% 92%;
+    --muted-foreground: 120 10% 40%;
+
+    --accent: 33 97% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 15% 85%;
+    --input: 120 15% 85%;
+    --ring: 120 54% 24%;
+
+    --radius: 1rem;
+
+    --cream: 33 100% 94%;
+    --success: 122 39% 45%;
+    --warning: 33 97% 49%;
+
+    --sidebar-background: 120 54% 24%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 120 54% 24%;
+    --sidebar-accent: 120 45% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 120 40% 28%;
+    --sidebar-ring: 33 97% 49%;
+  }
+
+  .dark {
+    --background: 120 20% 6%;
+    --foreground: 90 20% 92%;
+
+    --card: 120 20% 10%;
+    --card-foreground: 90 20% 92%;
+
+    --popover: 120 20% 10%;
+    --popover-foreground: 90 20% 92%;
+
+    --primary: 122 39% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 120 30% 18%;
+    --secondary-foreground: 90 20% 92%;
+
+    --muted: 120 15% 15%;
+    --muted-foreground: 90 10% 60%;
+
+    --accent: 33 97% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 15% 18%;
+    --input: 120 15% 18%;
+    --ring: 122 39% 45%;
+
+    --cream: 33 30% 12%;
+    --success: 122 39% 45%;
+    --warning: 33 97% 49%;
+
+    --sidebar-background: 120 25% 8%;
+    --sidebar-foreground: 90 20% 90%;
+    --sidebar-primary: 122 39% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 20% 14%;
+    --sidebar-accent-foreground: 90 20% 90%;
+    --sidebar-border: 120 15% 15%;
+    --sidebar-ring: 33 97% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+
+  .glass-card-accent {
+    @apply bg-card/60 backdrop-blur-xl border border-accent/20 shadow-lg shadow-accent/5;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(33 97% 60%));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(160deg, hsl(var(--primary)), hsl(var(--secondary)) 50%, hsl(120 40% 35%));
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent)), hsl(33 97% 60%));
+  }
+
+  .stat-card {
+    @apply glass-card rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .nav-link-active {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground;
+  }
+
+  .floating-btn {
+    @apply fixed bottom-6 right-6 z-50 rounded-full p-4 shadow-2xl gradient-accent text-accent-foreground transition-transform duration-200 hover:scale-110;
+  }
+
+  .badge-priority-high {
+    @apply bg-destructive/10 text-destructive border border-destructive/20;
+  }
+
+  .badge-priority-medium {
+    @apply bg-accent/10 text-accent border border-accent/20;
+  }
+
+  .badge-priority-low {
+    @apply bg-secondary/10 text-secondary border border-secondary/20;
+  }
+
+  .section-padding {
+    @apply px-4 py-16 md:px-8 lg:px-16 xl:px-24;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
